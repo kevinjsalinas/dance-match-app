@@ -1,11 +1,11 @@
-# from faker import Faker
+from faker import Faker
 import random
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-from models import Instructor, Lesson, Dancer
+from models import Instructor, Dancer, Lesson
 
-# fake = Faker()
+fake = Faker()
 
 if __name__ == '__main__':
     
@@ -13,47 +13,49 @@ if __name__ == '__main__':
     Session = sessionmaker(bind=engine)
     session = Session()
 
-instructor1 = Instructor(name="bob")
-session.add_all([instructor1])
+# instructor1 = Instructor(name="bob")
+# session.add_all([instructor1])
+# session.commit()
+
+session.query(Instructor).delete()
 session.commit()
 
-# session.query(Instructor).delete()
-# session.commit()
+instructor = [
+    Instructor(
+        name=fake.name()
+    )
+for i in range(5)]
 
-# instructor = [
-#     Instructor(
-#         name=fake.name()
-#     )
-# for i in range(5)]
-
-# session.add_all(instructor)
-# session.commit()
+session.add_all(instructor)
+session.commit()
 
 
-# session.query(Lesson).delete()
-# session.commit()
 
-# lesson = [
-#     Lesson(
-#         style=fake.word()
-#     )
-# for i in range(5)]
+session.query(Dancer).delete()
+session.commit()
 
-# session.add_all(lesson)
-# session.commit()
+dancer = [
+    Dancer(
+        name=fake.name()
+    )
+for i in range(5)]
+
+session.add_all(dancer)
+session.commit()
 
 
-# session.query(Dancer).delete()
-# session.commit()
 
-# dancer = [
-#     Dancer(
-#         name=fake.name()
-#     )
-# for i in range(5)]
+session.query(Lesson).delete()
+session.commit()
 
-# session.add_all(dancer)
-# session.commit()
+lesson = [
+    Lesson(
+        style=fake.word()
+    )
+for i in range(5)]
+
+session.add_all(lesson)
+session.commit()
 
 
 

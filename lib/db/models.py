@@ -22,15 +22,6 @@ class Instructor(Base):
     lessons = relationship('Lesson', backref = backref('instructor'))
 
 
-class Lesson(Base):
-    __tablename__ = 'lessons'
-
-    id = Column(Integer(), primary_key = True)
-    style = Column(String(), index=True)
-    instructor_id = Column(Integer(), ForeignKey('instructors.id'))
-    dancer_id = Column(Integer(), ForeignKey('dancers.id'))
-
-
 class Dancer(Base):
     __tablename__ = 'dancers'
 
@@ -38,6 +29,15 @@ class Dancer(Base):
     name = Column(String(), index=True)
 
     lessons = relationship('Lesson', backref = backref('dancer'))
+
+
+class Lesson(Base):
+    __tablename__ = 'lessons'
+
+    id = Column(Integer(), primary_key = True)
+    style = Column(String(), index=True)
+    instructor_id = Column(Integer(), ForeignKey('instructors.id'))
+    dancer_id = Column(Integer(), ForeignKey('dancers.id'))
 
 
 # peter = Dancer("Peter")
