@@ -16,14 +16,14 @@ class Instructor(Base):
     id = Column(Integer(), primary_key = True)
     name = Column(String(), index=True)
 
-class Lessons(Base):
-    __tablename__ = 'instructors'
+class Lesson(Base):
+    __tablename__ = 'lessons'
 
     id = Column(Integer(), primary_key = True)
     type = Column(String(), index=True)
 
 
-class Dancers(Base):
+class Dancer(Base):
     __tablename__ = 'dancers'
 
     id = Column(Integer(), primary_key = True)
