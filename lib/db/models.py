@@ -40,8 +40,4 @@ class Lesson(Base):
     dancer_id = Column(Integer(), ForeignKey('dancers.id'))
 
 
-# peter = Dancer("Peter")
-# joe = Instructor("Joe")
-# salsa = Lesson("salsa",joe, peter)
-
 # ipdb.set_trace()
