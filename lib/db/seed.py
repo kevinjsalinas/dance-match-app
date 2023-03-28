@@ -13,43 +13,47 @@ if __name__ == '__main__':
     Session = sessionmaker(bind=engine)
     session = Session()
 
-session.query(Instructor).delete()
+instructor1 = Instructor(name="bob")
+session.add_all([instructor1])
 session.commit()
 
-instructor = [
-    Instructor(
-        name=fake.name()
-    )
-for i in range(5)]
+# session.query(Instructor).delete()
+# session.commit()
 
-session.add_all(instructor)
-session.commit()
+# instructor = [
+#     Instructor(
+#         name=fake.name()
+#     )
+# for i in range(5)]
 
-
-session.query(Lesson).delete()
-session.commit()
-
-lesson = [
-    Lesson(
-        type=fake.word()
-    )
-for i in range(5)]
-
-session.add_all(lesson)
-session.commit()
+# session.add_all(instructor)
+# session.commit()
 
 
-session.query(Dancer).delete()
-session.commit()
+# session.query(Lesson).delete()
+# session.commit()
 
-dancer = [
-    Dancer(
-        name=fake.name()
-    )
-for i in range(5)]
+# lesson = [
+#     Lesson(
+#         style=fake.word()
+#     )
+# for i in range(5)]
 
-session.add_all(dancer)
-session.commit()
+# session.add_all(lesson)
+# session.commit()
+
+
+# session.query(Dancer).delete()
+# session.commit()
+
+# dancer = [
+#     Dancer(
+#         name=fake.name()
+#     )
+# for i in range(5)]
+
+# session.add_all(dancer)
+# session.commit()
 
 
 
