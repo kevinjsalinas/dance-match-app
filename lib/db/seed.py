@@ -1,11 +1,11 @@
-from faker import Faker
+# from faker import Faker
 import random
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
 from models import Instructor, Lesson, Dancer
 
-fake = Faker()
+# fake = Faker()
 
 if __name__ == '__main__':
     
