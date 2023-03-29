@@ -23,13 +23,18 @@ class CLI:
 
         exit = False
         while exit == False:
-                options = input(f'Type "instructors" to see a list of instructors, type "styles" to see different styles of lessons: ')
+                options = input(f'We\'re excited to match you with the right instructor. First, tell us about your dance experience.' +\
+                                f' Type "Beginner", "Intermediate", or "Advanced":  ')
                 print(' ') 
                 print(' ') 
-                if options.lower() == 'instructors':
-                     show_instructors_list(self)
-                elif options.lower() == 'styles':
-                     show_lessons_list(self)
+                if options.lower() == 'beginner':
+                     beginner_options(self)
+
+
+                elif options.lower() == 'intermediate':
+                     pass
+                elif options.lower() == 'advanced':
+                     pass
                 else:
                     exit = True
                     
@@ -41,6 +46,27 @@ class CLI:
                 #     exit = True
 
         # printer(self.name)
+
+def beginner_options(self):
+    exit = False
+    while exit == False:
+                options = input(f'Great! What type of dance style are you interested in learning?' +\
+                                f' Type "Salsa", "Flamenco", "Ballet", "Hip Hop", or "Jazz":' )
+                print(' ') 
+                print(' ') 
+                if options.lower() == 'salsa':
+                     print('salsa!')
+                else:
+                     exit = True
+
+
+
+
+
+
+
+
+
 
 
 
@@ -72,6 +98,9 @@ def print_lessons(lessons):
         print(f'{lesson.id}. {lesson.style}')
     
     print(' ')
+
+
+
 
 
 if __name__ == '__main__':
