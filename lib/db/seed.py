@@ -20,9 +20,12 @@ if __name__ == '__main__':
 session.query(Instructor).delete()
 session.commit()
 
+prices = [20, 70, 150]
 instructor = [
     Instructor(
-        name=fake.name()
+        name=fake.name(), 
+        rating=random.randint(1,5),
+        price=random.choice(prices)
     )
 for i in range(5)]
 
@@ -48,9 +51,13 @@ session.commit()
 session.query(Lesson).delete()
 session.commit()
 
+levels = ["Beginner", "Intermediate", "Advanced"]
+age_groups = ["Kids", "Adults", "Seniors"]
 lesson = [
     Lesson(
         style=fake.word(),
+        level=random.choice(levels),
+        age_group=random.choice(age_groups),
         instructor_id=random.choice(instructor).id,
         dancer_id=random.choice(dancer).id
     )

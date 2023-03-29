@@ -19,12 +19,16 @@ class Instructor(Base):
 
     id = Column(Integer(), primary_key = True)
     name = Column(String(), index=True)
+    rating = Column(Integer())
+    price = Column(Integer())
 
     lessons = relationship('Lesson', backref = backref('instructor'))
 
     def __repr__(self):
         return f'Instructor(id={self.id}, ' + \
-            f'name={self.name})'
+            f'name={self.name}), ' + \
+            f'rating={self.rating}), ' + \
+            f'price={self.price})'
 
 
 class Dancer(Base):
@@ -45,12 +49,16 @@ class Lesson(Base):
 
     id = Column(Integer(), primary_key = True)
     style = Column(String(), index=True)
+    level = Column(String())
+    age_group = Column(String())
     instructor_id = Column(Integer(), ForeignKey('instructors.id'))
     dancer_id = Column(Integer(), ForeignKey('dancers.id'))
 
     def __repr__(self):
         return f'Lesson(id={self.id}, ' + \
             f'style={self.style})' + \
+            f'level={self.level}' + \
+            f'age_group={self.age_group}' + \
             f'instructor_id={self.instructor_id}' + \
             f'dancer_id ={self.dancer_id})'
 
