@@ -50,7 +50,9 @@ session.commit()
 
 lesson = [
     Lesson(
-        style=fake.word()
+        style=fake.word(),
+        instructor_id=random.choice(instructor).id,
+        dancer_id=random.choice(dancer).id
     )
 for i in range(5)]
 
