@@ -23,15 +23,16 @@ class CLI:
 
         exit = False
         while exit == False:
-                options = input(f'Type "instructors" to see a list of instructors, type "styles" to see different styles of lessons ')
+                options = input(f'Type "instructors" to see a list of instructors, type "styles" to see different styles of lessons: ')
                 print(' ') 
                 print(' ') 
-                if options.lower() == "instructors":
+                if options.lower() == 'instructors':
                      show_instructors_list(self)
-                elif options.lower() == "styles":
+                elif options.lower() == 'styles':
                      show_lessons_list(self)
                 else:
-                    print("Dance the night away!")
+                    exit = True
+                    
         
                 # print(' ')
                 # user_input = input("Would you like to stop now? (Type Y/N): ")
@@ -43,23 +44,32 @@ class CLI:
 
 
 
-def show_instructors_list(instructors):
+def show_instructors_list(self):
+    print_instructors(self.instructors)
+
+
+def print_instructors(instructors):
+
     print(' ')
     print('🕺 Instructors 🕺')
     print(' ')
-
-    for index, instructor in enumerate(instructors):
-        print(f'{index + 1}. {instructor.name}')
+    for instructor in instructors:
+        print(f'{instructor.id}. {instructor.name}')
 
     print(' ')
 
-def show_lessons_list(lessons):
+
+def show_lessons_list(self):
+    print_lessons(self.lessons)
+
+
+def print_lessons(lessons):
     print(' ')
     print('** Lessons **')
     print(' ')
 
-    for index, lesson in enumerate(lessons):
-        print(f'{index + 1}. {lesson.style}')
+    for lesson in lessons:
+        print(f'{lesson.id}. {lesson.style}')
     
     print(' ')
 
@@ -68,7 +78,7 @@ if __name__ == '__main__':
     engine = create_engine('sqlite:///migrations_dance_match_app.db')
     Session = sessionmaker(bind=engine)
     session = Session()
-    user_input = input("Welcome to Dance Matcher! Please enter your name: ")
+    user_input = input('Welcome to Dance Matcher! Please enter your name: ')
     CLI(user_input)
 
 
