@@ -27,7 +27,7 @@ instructor = [
         rating=random.randint(1,5),
         price=random.choice(prices)
     )
-for i in range(5)]
+for i in range(10)]
 
 session.add_all(instructor)
 session.commit()
@@ -41,7 +41,7 @@ dancer = [
     Dancer(
         name=fake.name()
     )
-for i in range(5)]
+for i in range(10)]
 
 session.add_all(dancer)
 session.commit()
@@ -51,17 +51,22 @@ session.commit()
 session.query(Lesson).delete()
 session.commit()
 
-levels = ["Beginner", "Intermediate", "Advanced"]
+# levels = ["Beginner", "Intermediate", "Advanced"]
+levels = ["Beginner"]
 age_groups = ["Kids", "Adults", "Seniors"]
+# styles = ["Salsa", "Flamenco", "Ballet", "Hip Hop", "Jazz"]
+styles = ["Salsa"]
+
+
 lesson = [
     Lesson(
-        style=fake.word(),
+        style=random.choice(styles),
         level=random.choice(levels),
         age_group=random.choice(age_groups),
         instructor_id=random.choice(instructor).id,
         dancer_id=random.choice(dancer).id
     )
-for i in range(5)]
+for i in range(10)]
 
 session.add_all(lesson)
 session.commit()

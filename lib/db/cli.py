@@ -58,7 +58,7 @@ def beginner_dance_choice(self):
                 print(' ') 
                 print(' ') 
                 if options.lower() == 'salsa':
-                     salsa_list = [lesson for lesson in beginner_lessons_list if lesson.style == "professional"]
+                     salsa_list = [lesson for lesson in beginner_lessons_list if lesson.style == "Salsa"]
                      exit = False
                      while exit == False:
                         options = input(f'Groovy. Let\'s help you choose an instructor. \n \n -------------------------------------------------------------------- \n' +\
