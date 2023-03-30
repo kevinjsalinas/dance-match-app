@@ -12,10 +12,7 @@ if __name__ == '__main__':
     engine = create_engine('sqlite:///migrations_dance_match_app.db')
     Session = sessionmaker(bind=engine)
     session = Session()
-
-# instructor1 = Instructor(name="bob")
-# session.add_all([instructor1])
-# session.commit()
+    
 
 session.query(Instructor).delete()
 session.commit()
@@ -27,7 +24,7 @@ instructor = [
         rating=random.randint(1,5),
         price=random.choice(prices)
     )
-for i in range(10)]
+for i in range(50)]
 
 session.add_all(instructor)
 session.commit()
@@ -41,7 +38,7 @@ dancer = [
     Dancer(
         name=fake.name()
     )
-for i in range(10)]
+for i in range(50)]
 
 session.add_all(dancer)
 session.commit()
@@ -51,11 +48,9 @@ session.commit()
 session.query(Lesson).delete()
 session.commit()
 
-# levels = ["Beginner", "Intermediate", "Advanced"]
-levels = ["Beginner"]
+levels = ["Beginner", "Intermediate", "Advanced"]
 age_groups = ["Kids", "Adults", "Seniors"]
-# styles = ["Salsa", "Flamenco", "Ballet", "Hip Hop", "Jazz"]
-styles = ["Salsa"]
+styles = ["Salsa", "Flamenco", "Ballet", "Hip Hop", "Jazz"]
 
 
 lesson = [
@@ -66,7 +61,7 @@ lesson = [
         instructor_id=random.choice(instructor).id,
         dancer_id=random.choice(dancer).id
     )
-for i in range(10)]
+for i in range(50)]
 
 session.add_all(lesson)
 session.commit()
