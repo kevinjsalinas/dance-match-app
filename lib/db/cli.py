@@ -7,130 +7,223 @@ from sqlalchemy.orm import sessionmaker
 
 class CLI:
     def __init__(self, user_input):
-        self.instructors = [instructor for instructor in session.query(Instructor)]
-        self.dancers = [dancer for dancer in session.query(Dancer)]
-        self.lessons = [lesson for lesson in session.query(Lesson)]
-        self.name = user_input
-        self.start()
+       self.instructors = [instructor for instructor in session.query(Instructor)]
+       self.dancers = [dancer for dancer in session.query(Dancer)]
+       self.lessons = [lesson for lesson in session.query(Lesson)]
+       self.name = user_input
+       self.start()
 
 
   #####
     #Show me a list of instructors
     def start(self):
-        print(' ')
-        print(f'🕺🕺🕺🕺 Get ready to get your groove on {self.name} 🕺🕺🕺🕺')
-        print(' ')
+       print(' ')
+       print(f'🕺🕺🕺🕺 Get ready to get your groove on {self.name} 🕺🕺🕺🕺')
+       print(' ')
 
-        exit = False
-        while exit == False:
-                options = input(f'We\'re excited to match you with the right instructor. First, tell us about your dance experience. \n \nType "Beginner", "Intermediate", or "Advanced":  ')
-                print(' ') 
-                print(' ') 
-                if options.lower() == 'beginner':
-                     beginner_dance_choice(self)
+       exit = False
+       while exit == False:
+             options = input(f'We\'re excited to match you with the right instructor. First, tell us about your dance experience. \n \nType "Beginner", "Intermediate", or "Advanced":  ')
+             print(' ') 
+             print(' ') 
+             if options.lower() == 'beginner':
+                 beginner_dance_choice(self)
 
-                elif options.lower() == 'intermediate':
-                     intermediate_dance_choice(self)
+             elif options.lower() == 'intermediate':
+                 intermediate_dance_choice(self)
 
-                elif options.lower() == 'advanced':
-                     advanced_dance_choice(self)
+             elif options.lower() == 'advanced':
+                 advanced_dance_choice(self)
 
-                else:
-                    exit = True
-                    
-        
-                # print(' ')
-                # user_input = input("Would you like to stop now? (Type Y/N): ")
-                # print(' ')
-                # if user_input == "Y" or user_input == 'y':
-                #     exit = True
+             else:
+                exit = True
+                
+       
+             # print(' ')
+             # user_input = input("Would you like to stop now? (Type Y/N): ")
+             # print(' ')
+             # if user_input == "Y" or user_input == 'y':
+             #     exit = True
 
-        # printer(self.name)
+       # printer(self.name)
 
 
 
-     
+    
 def beginner_dance_choice(self):
     beginner_lessons_list = [lesson for lesson in self.lessons if lesson.level == "Beginner"]
     exit = False
     while exit == False:
-                options = input(f'Great! What type of dance style are you interested in learning? \n \nType "Salsa", "Flamenco", "Ballet", "Hip Hop", or "Jazz": ' )
-                print(' ') 
-                print(' ') 
-                if options.lower() == 'salsa':
-                     salsa_list = [lesson for lesson in beginner_lessons_list if lesson.style == "Salsa"]
-                     exit = False
-                     while exit == False:
-                        options = input(f'Groovy. Let\'s help you choose an instructor. \n \n -------------------------------------------------------------------- \n' +\
-                                        f'Type "ratings" to see top-rated instructors with 4 stars or higher. \n' +\
-                                        f'Type "price" to see instructors sorted by price. \n' +\
-                                        f'Type "all" to see all instructors. \n \n')
-                        print(' ') 
-                        print(' ') 
-                        if options.lower() == 'ratings':
-                            ratings_list = [instructor for instructor in self.instructors if instructor.rating >= 4 ]
-                            for lesson in salsa_list:
-                                for instructor in ratings_list:
-                                     if lesson.instructor_id == instructor.id:
-                                          print( f'{instructor.name} {instructor.rating}' )
-                                          print(' ') 
-                                          print(' ')
-                        elif options.lower() == 'price':
-                            pass
+             options = input(f'Great! What type of dance style are you interested in learning? \n \nType "Salsa", "Flamenco", "Ballet", "Hip Hop", or "Jazz": ' )
+             print(' ') 
+             print(' ') 
+             if options.lower() == 'salsa':
+                 salsa_list = [lesson for lesson in beginner_lessons_list if lesson.style == "Salsa"]
+                 exit = False
+                 while exit == False:
+                    options = input(f'Groovy. Let\'s help you choose an instructor. \n \n -------------------------------------------------------------------- \n' +\
+                                f'Type "ratings" to see top-rated instructors with 4 stars or higher. \n' +\
+                                f'Type "price" to see instructors sorted by price. \n' +\
+                                f'Type "all" to see all instructors. \n \n')
+                    print(' ') 
+                    print(' ') 
+                    if options.lower() == 'ratings':
+                       instructors_ratings_list = [instructor for instructor in self.instructors if instructor.rating >= 4 ]
+                       for instructor in instructors_ratings_list:
+                           for i in range(len(salsa_list)):
+                               if instructor.id == salsa_list[i].instructor_id:
+                                   print(instructor)
+                       print(' ') 
+                       print(' ')
 
-                        elif options.lower() == 'all':
-                            pass
+                    elif options.lower() == 'price':
+                       
+                       instructors_price_list = []
+                       for i in range(len(self.instructors)):
+                           for instructor in self.instructors:
+                               if instructor.id == beginner_lessons_list[i].instructor_id:
+                                   instructors_price_list.append(instructor)
+                       instructors_price_list.sort(key = lambda i:i.price)
+                       instructor_names = [instructor.name for instructor in instructors_price_list ]
+                       instructor_prices = [instructor.price for instructor in instructors_price_list]
+                       text = '$$$ LESSON PRICES $$$ \n'
+                       print(f'{text.center(202)}')
+                       price_text = '\n'.join(['{}.....${}'.format(*t).center(200) for t in zip(instructor_names, instructor_prices)])
+                       print(f'{price_text}')
+                       print(' ') 
+                       print(' ')
 
-                        else:
-                            exit = True
-                     
-                elif options.lower() == 'flamenco':
-                     pass
-                elif options.lower() == 'ballet':
-                     pass
-                elif options.lower() == 'hip hop':
-                     pass
-                elif options.lower() == 'jazz':
-                     pass
-                else:
-                    exit = True
+                    elif options.lower() == 'all':
+                       for i in range(len(self.instructors)):
+                           print([instructor for instructor in self.instructors if instructor.id == salsa_list[i].instructor_id])
+                       print(' ') 
+                       print(' ')
+
+                    else:
+                       exit = True
+                 
+             elif options.lower() == 'flamenco':
+                 pass
+             elif options.lower() == 'ballet':
+                 pass
+             elif options.lower() == 'hip hop':
+                 pass
+             elif options.lower() == 'jazz':
+                 pass
+             else:
+                exit = True
 
 def intermediate_dance_choice(self):
+    intermediate_lessons_list = [lesson for lesson in self.lessons if lesson.level == "Intermediate"]
     exit = False
     while exit == False:
-                options = input(f'Great! What type of dance style are you interested in learning? \n \nType "Salsa", "Flamenco", "Ballet", "Hip Hop", or "Jazz": ' )
-                print(' ') 
-                print(' ') 
-                if options.lower() == 'salsa':
-                     pass
-                elif options.lower() == 'flamenco':
-                     pass
-                elif options.lower() == 'ballet':
-                     pass
-                elif options.lower() == 'hip hop':
-                     pass
-                elif options.lower() == 'jazz':
-                     pass
-                else:
-                     exit = True
+             options = input(f'Great! What type of dance style are you interested in learning? \n \nType "Salsa", "Flamenco", "Ballet", "Hip Hop", or "Jazz": ' )
+             print(' ') 
+             print(' ') 
+             if options.lower() == 'salsa':
+                 salsa_list = [lesson for lesson in intermediate_lessons_list if lesson.style == "Salsa"]
+                 exit = False
+                 while exit == False:
+                    options = input(f'Groovy. Let\'s help you choose an instructor. \n \n -------------------------------------------------------------------- \n' +\
+                                f'Type "ratings" to see top-rated instructors with 4 stars or higher. \n' +\
+                                f'Type "price" to see instructors sorted by price. \n' +\
+                                f'Type "all" to see all instructors. \n \n')
+                    print(' ') 
+                    print(' ') 
+                    if options.lower() == 'ratings':
+                       instructors_ratings_list = [instructor for instructor in self.instructors if instructor.rating >= 4 ]
+                       for instructor in instructors_ratings_list:
+                           for i in range(len(salsa_list)):
+                               if instructor.id == salsa_list[i].instructor_id:
+                                   print(instructor)
+                       print(' ') 
+                       print(' ')
+
+                    elif options.lower() == 'price':
+                       instructors_price_list = []
+                       for i in range(len(self.instructors)):
+                           for instructor in self.instructors:
+                               if instructor.id == intermediate_lessons_list[i].instructor_id:
+                                   instructors_price_list.append(instructor)
+                       instructors_price_list.sort(key = lambda i:i.price)
+                       instructor_names = [instructor.name for instructor in instructors_price_list ]
+                       instructor_prices = [instructor.price for instructor in instructors_price_list]
+                       text = '$$$ LESSON PRICES $$$ \n'
+                       print(f'{text.center(202)}')
+                       price_text = '\n'.join(['{}.....${}'.format(*t).center(200) for t in zip(instructor_names, instructor_prices)])
+                       print(f'{price_text}')
+                       print(' ') 
+                       print(' ')
+
+                    elif options.lower() == 'all':
+                       for i in range(len(self.instructors)):
+                           print([instructor for instructor in self.instructors if instructor.id == salsa_list[i].instructor_id])
+                       print(' ') 
+                       print(' ')
+
+                    else:
+                       exit = True
+                 
+             elif options.lower() == 'flamenco':
+                 pass
+             elif options.lower() == 'ballet':
+                 pass
+             elif options.lower() == 'hip hop':
+                 pass
+             elif options.lower() == 'jazz':
+                 pass
+             else:
+                exit = True
 def advanced_dance_choice(self):
+    advanced_lessons_list = [lesson for lesson in self.lessons if lesson.level == "Advanced"]
     exit = False
     while exit == False:
-                options = input(f'Great! What type of dance style are you interested in learning? \n \nType "Salsa", "Flamenco", "Ballet", "Hip Hop", or "Jazz": ' )
-                print(' ') 
-                print(' ') 
-                if options.lower() == 'salsa':
-                     pass
-                elif options.lower() == 'flamenco':
-                     pass
-                elif options.lower() == 'ballet':
-                     pass
-                elif options.lower() == 'hip hop':
-                     pass
-                elif options.lower() == 'jazz':
-                     pass
-                else:
-                     exit = True
+             options = input(f'Great! What type of dance style are you interested in learning? \n \nType "Salsa", "Flamenco", "Ballet", "Hip Hop", or "Jazz": ' )
+             print(' ') 
+             print(' ') 
+             if options.lower() == 'salsa':
+                 salsa_list = [lesson for lesson in advanced_lessons_list if lesson.style == "Salsa"]
+                 exit = False
+                 while exit == False:
+                    options = input(f'Groovy. Let\'s help you choose an instructor. \n \n -------------------------------------------------------------------- \n' +\
+                                f'Type "ratings" to see top-rated instructors with 4 stars or higher. \n' +\
+                                f'Type "price" to see instructors sorted by price. \n' +\
+                                f'Type "all" to see all instructors. \n \n')
+                    print(' ') 
+                    print(' ') 
+                    if options.lower() == 'ratings':
+                       instructors_ratings_list = [instructor for instructor in self.instructors if instructor.rating >= 4 ]
+                       for instructor in instructors_ratings_list:
+                           for i in range(len(salsa_list)):
+                               if instructor.id == salsa_list[i].instructor_id:
+                                   print(instructor)
+                       print(' ') 
+                       print(' ')
+
+                    elif options.lower() == 'price':
+                       instructors_price_list = []
+                       for i in range(len(self.instructors)):
+                           for instructor in self.instructors:
+                               if instructor.id == advanced_lessons_list[i].instructor_id:
+                                   instructors_price_list.append(instructor)
+                       instructors_price_list.sort(key = lambda i:i.price)
+                       instructor_names = [instructor.name for instructor in instructors_price_list ]
+                       instructor_prices = [instructor.price for instructor in instructors_price_list]
+                       text = '$$$ LESSON PRICES $$$ \n'
+                       print(f'{text.center(202)}')
+                       price_text = '\n'.join(['{}.....${}'.format(*t).center(200) for t in zip(instructor_names, instructor_prices)])
+                       print(f'{price_text}')
+                       print(' ') 
+                       print(' ')
+
+                    elif options.lower() == 'all':
+                       for i in range(len(self.instructors)):
+                           print([instructor for instructor in self.instructors if instructor.id == salsa_list[i].instructor_id])
+                       print(' ') 
+                       print(' ')
+
+                    else:
+                       exit = True
 
 
 
@@ -153,7 +246,7 @@ def print_instructors(instructors):
     print('🕺 Instructors 🕺')
     print(' ')
     for instructor in instructors:
-        print(f'{instructor.id}. {instructor.name}')
+       print(f'{instructor.id}. {instructor.name}')
 
     print(' ')
 
@@ -168,7 +261,7 @@ def print_lessons(lessons):
     print(' ')
 
     for lesson in lessons:
-        print(f'{lesson.id}. {lesson.style}')
+       print(f'{lesson.id}. {lesson.style}')
     
     print(' ')
 
@@ -212,7 +305,7 @@ if __name__ == '__main__':
 #     print_bottle(bottle)
 
 
-        
+       
 # def printer(user_input):
 #     print(' ')
 #     print(f'Goodbye {user_input}!')
