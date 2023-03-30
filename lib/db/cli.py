@@ -1067,6 +1067,29 @@ def advanced_dance_choice(self):
              else:
                 exit = True
 
+# def join_lesson(self):
+#     instructor_name = input("Type the name of the instructor: ")
+
+#     year = input("What vintage is the bottle?: " )
+#     price = input("How much did you pay for the bottle?: " )
+#     score = input("How would you rate it on a scale of 1-10?: " )
+
+#     lesson = Lesson(
+#             style =
+#             level = 
+#             age_group = " "
+#             instructor_name = instructor_name,
+#             grape_id = self.grapes[int(user_grape) - 1].id,
+#             winery_id = self.wineries[int(user_winery) - 1].id
+#     )
+
+#     session.add(lesson)
+#     session.commit()
+
+#     self.lessons.append(lesson)
+#     print(' ')
+#     print(' ')
+
 
 
 
