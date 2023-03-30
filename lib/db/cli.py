@@ -78,29 +78,15 @@ def beginner_dance_choice(self):
                          prices = session.query(Instructor, Lesson).filter(and_(Instructor.id == Lesson.instructor_id, Lesson.level == "Beginner", Lesson.style == "Salsa")).all()
                          print('Instructors by Price 💵')
                          print(' ')
-                         print(list(prices))
-                         for price in prices:
-                              print((price[0]))
-                              # print(f"-- {price[0].name}: ${price[0].price}")
-                              print(' ')
-          #              instructors_price_list = []
-          #              for i in range(len(self.instructors)):
-          #                  for instructor in self.instructors:
-          #                      if instructor.id == beginner_lessons_list[i].instructor_id:
-          #                          instructors_price_list.append(instructor)
-          #              instructors_price_list.sort(key = lambda i:i.price)
-          #              instructor_names = [instructor.name for instructor in instructors_price_list ]
-          #              instructor_prices = [instructor.price for instructor in instructors_price_list]
-          #              text = '$$$ LESSON PRICES $$$ \n'
-          #              print(f'{text.center(202)}')
-          #              price_text = '\n'.join(['{}.....${}'.format(*t).center(200) for t in zip(instructor_names, instructor_prices)])
-          #              print(f'{price_text}')
-          #              print(' ') 
-          #              print(' ')
-
+                         price_list = (prices)
+                         show_instructor = []
+                         for i in price_list:
+                             show_instructor.append(i[0])
+                         show_instructor.sort(key=lambda i:i.price)
+                         for price in show_instructor:
+                              print(f"-- {price.name}: ${price.price}")
+                         print(' ')
                     elif options.lower() == 'all':
-                    #    for i in range(len(self.instructors)):
-                    #        print([instructor for instructor in self.instructors if instructor.id == salsa_list[i].instructor_id])
                        all = session.query(Instructor, Lesson).filter(and_(Instructor.id == Lesson.instructor_id, Lesson.level == "Beginner", Lesson.style == "Salsa")).all()
                        print('💃🕺💃 All Beginner Salsa Instructors 💃🕺💃')
                        print(' ')
@@ -317,3 +303,8 @@ if __name__ == '__main__':
 # def printer(user_input):
 #     print(' ')
 #     print(f'Goodbye {user_input}!')
+
+
+          #              print(f'{text.center(202)}')
+          #              price_text = '\n'.join(['{}.....${}'.format(*t).center(200) for t in zip(instructor_names, instructor_prices)])
+          #              print(f'{price_text}')
