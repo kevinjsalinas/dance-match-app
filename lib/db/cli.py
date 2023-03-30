@@ -51,14 +51,14 @@ class CLI:
 
     
 def beginner_dance_choice(self):
-    beginner_lessons_list = [lesson for lesson in self.lessons if lesson.level == "Beginner"]
+#     beginner_lessons_list = [lesson for lesson in self.lessons if lesson.level == "Beginner"]
     exit = False
     while exit == False:
              options = input(f'Great! What type of dance style are you interested in learning? \n \nType "Salsa", "Flamenco", "Ballet", "Hip Hop", or "Jazz": ' )
              print(' ') 
              print(' ') 
              if options.lower() == 'salsa':
-                 salsa_list = [lesson for lesson in beginner_lessons_list if lesson.style == "Salsa"]
+               #   salsa_list = [lesson for lesson in beginner_lessons_list if lesson.style == "Salsa"]
                  exit = False
                  while exit == False:
                     options = input(f'Groovy. Let\'s help you choose an instructor. \n \n -------------------------------------------------------------------- \n' +\
@@ -67,51 +67,54 @@ def beginner_dance_choice(self):
                                 f'Type "all" to see all instructors. \n \n')
                     print(' ') 
                     print(' ') 
+                    # session.query(Dog).filter(Dog.name == name and Dog.breed == breed).first()
                     if options.lower() == 'ratings':
-                       instructors_ratings_list = [instructor for instructor in self.instructors if instructor.rating >= 4 ]
-                       for instructor in instructors_ratings_list:
-                           for i in range(len(salsa_list)):
-                               if instructor.id == salsa_list[i].instructor_id:
-                                   print(instructor)
-                       print(' ') 
-                       print(' ')
+                        ratings = session.query(Instructor).filter(Instructor.rating >= 4).all()
+                        print(ratings)
+#                        instructors_ratings_list = [instructor for instructor in self.instructors if instructor.rating >= 4 ]
+#                        for instructor in instructors_ratings_list:
+#                            for i in range(len(salsa_list)):
+#                                if instructor.id == salsa_list[i].instructor_id:
+#                                    print(instructor)
+#                        print(' ') 
+#                        print(' ')
 
-                    elif options.lower() == 'price':
+#                     elif options.lower() == 'price':
                        
-                       instructors_price_list = []
-                       for i in range(len(self.instructors)):
-                           for instructor in self.instructors:
-                               if instructor.id == beginner_lessons_list[i].instructor_id:
-                                   instructors_price_list.append(instructor)
-                       instructors_price_list.sort(key = lambda i:i.price)
-                       instructor_names = [instructor.name for instructor in instructors_price_list ]
-                       instructor_prices = [instructor.price for instructor in instructors_price_list]
-                       text = '$$$ LESSON PRICES $$$ \n'
-                       print(f'{text.center(202)}')
-                       price_text = '\n'.join(['{}.....${}'.format(*t).center(200) for t in zip(instructor_names, instructor_prices)])
-                       print(f'{price_text}')
-                       print(' ') 
-                       print(' ')
+#                        instructors_price_list = []
+#                        for i in range(len(self.instructors)):
+#                            for instructor in self.instructors:
+#                                if instructor.id == beginner_lessons_list[i].instructor_id:
+#                                    instructors_price_list.append(instructor)
+#                        instructors_price_list.sort(key = lambda i:i.price)
+#                        instructor_names = [instructor.name for instructor in instructors_price_list ]
+#                        instructor_prices = [instructor.price for instructor in instructors_price_list]
+#                        text = '$$$ LESSON PRICES $$$ \n'
+#                        print(f'{text.center(202)}')
+#                        price_text = '\n'.join(['{}.....${}'.format(*t).center(200) for t in zip(instructor_names, instructor_prices)])
+#                        print(f'{price_text}')
+#                        print(' ') 
+#                        print(' ')
 
-                    elif options.lower() == 'all':
-                       for i in range(len(self.instructors)):
-                           print([instructor for instructor in self.instructors if instructor.id == salsa_list[i].instructor_id])
-                       print(' ') 
-                       print(' ')
+#                     elif options.lower() == 'all':
+#                        for i in range(len(self.instructors)):
+#                            print([instructor for instructor in self.instructors if instructor.id == salsa_list[i].instructor_id])
+#                        print(' ') 
+#                        print(' ')
 
-                    else:
-                       exit = True
+#                     else:
+#                        exit = True
                  
-             elif options.lower() == 'flamenco':
-                 pass
-             elif options.lower() == 'ballet':
-                 pass
-             elif options.lower() == 'hip hop':
-                 pass
-             elif options.lower() == 'jazz':
-                 pass
-             else:
-                exit = True
+#              elif options.lower() == 'flamenco':
+#                  pass
+#              elif options.lower() == 'ballet':
+#                  pass
+#              elif options.lower() == 'hip hop':
+#                  pass
+#              elif options.lower() == 'jazz':
+#                  pass
+#              else:
+#                 exit = True
 
 def intermediate_dance_choice(self):
     intermediate_lessons_list = [lesson for lesson in self.lessons if lesson.level == "Intermediate"]
