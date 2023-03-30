@@ -56,14 +56,16 @@ def beginner_dance_choice(self):
     while exit == False:
              options = input(f'Great! What style of dance are you interested in learning? \n \nType "Salsa", "Flamenco", "Ballet", "Hip Hop", or "Jazz": ')
              print(' ') 
-             print(' ') 
+             print(' ')
+             style = options 
              if options.lower() == 'salsa':
                  exit = False
                  while exit == False:
                     options = input(f'Groovy. Let\'s help you choose a Salsa instructor for Beginners. \n \n--------------------------------------------------------------------\n \n' +\
                                 f'Type "ratings" to see top-rated instructors with 4 stars or higher. \n' +\
                                 f'Type "price" to see instructors sorted by price. \n' +\
-                                f'Type "all" to see all instructors. \n \n')
+                                f'Type "all" to see all instructors. \n'+\
+                                f'Type "dancers" to see other dancers in your level and style. \n\n')
                     print(' ') 
                     print(' ') 
                     if options.lower() == 'ratings':
@@ -114,6 +116,20 @@ def beginner_dance_choice(self):
                        if user_input == "Exit" or user_input == 'EXIT' or user_input == 'exit':
                          print(f"Goodbye {self.name}")
                          quit()
+                    elif options.lower() == 'dancers':
+                        dancers = session.query(Dancer, Lesson).filter(and_(Dancer.id == Lesson.dancer_id, Lesson.level == "Beginner", Lesson.style == "Salsa")).all()
+                        print('💃🕺💃 All Beginner Salsa Dancers 💃🕺💃')
+                        print(' ')
+                        for dancer in dancers:
+                              print(f"-- {dancer[0].name}")
+                        print(' ')
+                        #added just now 
+                        print(' ')
+                        user_input = input('To see other options, type "more" else "exit": ')
+                        print(' ')
+                        if user_input == "Exit" or user_input == 'EXIT' or user_input == 'exit':
+                              print(f"Goodbye {self.name}")
+                              quit()
                     else:
                          ##### just added
                          print(' ')
@@ -129,7 +145,8 @@ def beginner_dance_choice(self):
                     options = input(f'Groovy. Let\'s help you choose a Flamenco instructor for Beginners. \n \n--------------------------------------------------------------------\n \n' +\
                                 f'Type "ratings" to see top-rated instructors with 4 stars or higher. \n' +\
                                 f'Type "price" to see instructors sorted by price. \n' +\
-                                f'Type "all" to see all instructors. \n \n')
+                                f'Type "all" to see all instructors. \n' +\
+                                f'Type "dancers" to see other dancers in your level and style. \n\n')
                     print(' ') 
                     print(' ') 
                     if options.lower() == 'ratings':
@@ -195,7 +212,8 @@ def beginner_dance_choice(self):
                     options = input(f'Groovy. Let\'s help you choose a Ballet instructor for Beginners. \n \n--------------------------------------------------------------------\n \n' +\
                                 f'Type "ratings" to see top-rated instructors with 4 stars or higher. \n' +\
                                 f'Type "price" to see instructors sorted by price. \n' +\
-                                f'Type "all" to see all instructors. \n \n')
+                                f'Type "all" to see all instructors. \n'+\
+                                f'Type "dancers" to see other dancers in your level and style. \n\n')
                     print(' ') 
                     print(' ') 
                     if options.lower() == 'ratings':
@@ -261,7 +279,8 @@ def beginner_dance_choice(self):
                     options = input(f'Groovy. Let\'s help you choose a Hip Hop instructor for Beginners. \n \n--------------------------------------------------------------------\n \n' +\
                                 f'Type "ratings" to see top-rated instructors with 4 stars or higher. \n' +\
                                 f'Type "price" to see instructors sorted by price. \n' +\
-                                f'Type "all" to see all instructors. \n \n')
+                                f'Type "all" to see all instructors. \n'+\
+                                f'Type "dancers" to see other dancers in your level and style. \n\n')
                     print(' ') 
                     print(' ') 
                     if options.lower() == 'ratings':
@@ -327,7 +346,8 @@ def beginner_dance_choice(self):
                     options = input(f'Groovy. Let\'s help you choose a Jazz instructor for Beginners. \n \n--------------------------------------------------------------------\n \n' +\
                                 f'Type "ratings" to see top-rated instructors with 4 stars or higher. \n' +\
                                 f'Type "price" to see instructors sorted by price. \n' +\
-                                f'Type "all" to see all instructors. \n \n')
+                                f'Type "all" to see all instructors. \n'+\
+                                f'Type "dancers" to see other dancers in your level and style. \n\n')
                     print(' ') 
                     print(' ') 
                     if options.lower() == 'ratings':
@@ -402,7 +422,8 @@ def intermediate_dance_choice(self):
                     options = input(f'Groovy. Let\'s help you choose a Salsa instructor for Intermediate. \n \n--------------------------------------------------------------------\n \n' +\
                                 f'Type "ratings" to see top-rated instructors with 4 stars or higher. \n' +\
                                 f'Type "price" to see instructors sorted by price. \n' +\
-                                f'Type "all" to see all instructors. \n \n')
+                                f'Type "all" to see all instructors. \n'+\
+                                f'Type "dancers" to see other dancers in your level and style. \n\n')
                     print(' ') 
                     print(' ') 
                     if options.lower() == 'ratings':
@@ -468,7 +489,8 @@ def intermediate_dance_choice(self):
                     options = input(f'Groovy. Let\'s help you choose a Flamenco instructor for Intermediate. \n \n--------------------------------------------------------------------\n \n' +\
                                 f'Type "ratings" to see top-rated instructors with 4 stars or higher. \n' +\
                                 f'Type "price" to see instructors sorted by price. \n' +\
-                                f'Type "all" to see all instructors. \n \n')
+                                f'Type "all" to see all instructors. \n'+\
+                                f'Type "dancers" to see other dancers in your level and style. \n\n')
                     print(' ') 
                     print(' ') 
                     if options.lower() == 'ratings':
@@ -534,7 +556,8 @@ def intermediate_dance_choice(self):
                     options = input(f'Groovy. Let\'s help you choose a Ballet instructor for Intermediate. \n \n--------------------------------------------------------------------\n \n' +\
                                 f'Type "ratings" to see top-rated instructors with 4 stars or higher. \n' +\
                                 f'Type "price" to see instructors sorted by price. \n' +\
-                                f'Type "all" to see all instructors. \n \n')
+                                f'Type "all" to see all instructors. \n'+\
+                                f'Type "dancers" to see other dancers in your level and style. \n\n')
                     print(' ') 
                     print(' ') 
                     if options.lower() == 'ratings':
@@ -600,7 +623,8 @@ def intermediate_dance_choice(self):
                     options = input(f'Groovy. Let\'s help you choose a Hip Hop instructor for Intermediate. \n \n--------------------------------------------------------------------\n \n' +\
                                 f'Type "ratings" to see top-rated instructors with 4 stars or higher. \n' +\
                                 f'Type "price" to see instructors sorted by price. \n' +\
-                                f'Type "all" to see all instructors. \n \n')
+                                f'Type "all" to see all instructors. \n'+\
+                                f'Type "dancers" to see other dancers in your level and style. \n\n')
                     print(' ') 
                     print(' ') 
                     if options.lower() == 'ratings':
@@ -666,7 +690,8 @@ def intermediate_dance_choice(self):
                     options = input(f'Groovy. Let\'s help you choose a Jazz instructor for Intermediate. \n \n--------------------------------------------------------------------\n \n' +\
                                 f'Type "ratings" to see top-rated instructors with 4 stars or higher. \n' +\
                                 f'Type "price" to see instructors sorted by price. \n' +\
-                                f'Type "all" to see all instructors. \n \n')
+                                f'Type "all" to see all instructors. \n'+\
+                                f'Type "dancers" to see other dancers in your level and style. \n\n')
                     print(' ') 
                     print(' ') 
                     if options.lower() == 'ratings':
@@ -735,13 +760,15 @@ def advanced_dance_choice(self):
              options = input(f'Great! What style of dance are you interested in learning? \n \nType "Salsa", "Flamenco", "Ballet", "Hip Hop", or "Jazz": ')
              print(' ') 
              print(' ') 
+             style = options
              if options.lower() == 'salsa':
                  exit = False
                  while exit == False:
                     options = input(f'Groovy. Let\'s help you choose a Salsa instructor for Experts. \n \n--------------------------------------------------------------------\n \n' +\
                                 f'Type "ratings" to see top-rated instructors with 4 stars or higher. \n' +\
                                 f'Type "price" to see instructors sorted by price. \n' +\
-                                f'Type "all" to see all instructors. \n \n')
+                                f'Type "all" to see all instructors. \n'+\
+                                f'Type "dancers" to see other dancers in your level and style. \n\n')
                     print(' ') 
                     print(' ') 
                     if options.lower() == 'ratings':
@@ -807,7 +834,8 @@ def advanced_dance_choice(self):
                     options = input(f'Groovy. Let\'s help you choose a Flamenco instructor for Experts. \n \n--------------------------------------------------------------------\n \n' +\
                                 f'Type "ratings" to see top-rated instructors with 4 stars or higher. \n' +\
                                 f'Type "price" to see instructors sorted by price. \n' +\
-                                f'Type "all" to see all instructors. \n \n')
+                                f'Type "all" to see all instructors. \n'+\
+                                f'Type "dancers" to see other dancers in your level and style. \n\n')
                     print(' ') 
                     print(' ') 
                     if options.lower() == 'ratings':
@@ -873,7 +901,8 @@ def advanced_dance_choice(self):
                     options = input(f'Groovy. Let\'s help you choose a Ballet instructor for Experts. \n \n--------------------------------------------------------------------\n \n' +\
                                 f'Type "ratings" to see top-rated instructors with 4 stars or higher. \n' +\
                                 f'Type "price" to see instructors sorted by price. \n' +\
-                                f'Type "all" to see all instructors. \n \n')
+                                f'Type "all" to see all instructors. \n'+\
+                                f'Type "dancers" to see other dancers in your level and style. \n\n')
                     print(' ') 
                     print(' ') 
                     if options.lower() == 'ratings':
@@ -939,7 +968,8 @@ def advanced_dance_choice(self):
                     options = input(f'Groovy. Let\'s help you choose a Hip Hop instructor for Experts. \n \n--------------------------------------------------------------------\n \n' +\
                                 f'Type "ratings" to see top-rated instructors with 4 stars or higher. \n' +\
                                 f'Type "price" to see instructors sorted by price. \n' +\
-                                f'Type "all" to see all instructors. \n \n')
+                                f'Type "all" to see all instructors. \n'+\
+                                f'Type "dancers" to see other dancers in your level and style. \n\n')
                     print(' ') 
                     print(' ') 
                     if options.lower() == 'ratings':
@@ -1005,7 +1035,8 @@ def advanced_dance_choice(self):
                     options = input(f'Groovy. Let\'s help you choose a Jazz instructor for Experts. \n \n--------------------------------------------------------------------\n \n' +\
                                 f'Type "ratings" to see top-rated instructors with 4 stars or higher. \n' +\
                                 f'Type "price" to see instructors sorted by price. \n' +\
-                                f'Type "all" to see all instructors. \n \n')
+                                f'Type "all" to see all instructors. \n'+\
+                                f'Type "dancers" to see other dancers in your level and style. \n\n')
                     print(' ') 
                     print(' ') 
                     if options.lower() == 'ratings':
@@ -1015,6 +1046,7 @@ def advanced_dance_choice(self):
                         for instructor in ratings:
                               print(f"-- {instructor[0].name}, {instructor[0].rating} stars")
                         print(' ')
+                        join_lesson(style)
                         #added just now 
                         print(' ')
                         user_input = input('To see other options, type "more" else "exit": ')
@@ -1067,28 +1099,25 @@ def advanced_dance_choice(self):
              else:
                 exit = True
 
-# def join_lesson(self):
-#     instructor_name = input("Type the name of the instructor: ")
 
-#     year = input("What vintage is the bottle?: " )
-#     price = input("How much did you pay for the bottle?: " )
-#     score = input("How would you rate it on a scale of 1-10?: " )
-
-#     lesson = Lesson(
-#             style =
-#             level = 
-#             age_group = " "
-#             instructor_name = instructor_name,
-#             grape_id = self.grapes[int(user_grape) - 1].id,
-#             winery_id = self.wineries[int(user_winery) - 1].id
-#     )
-
-#     session.add(lesson)
-#     session.commit()
-
-#     self.lessons.append(lesson)
-#     print(' ')
-#     print(' ')
+def join_lesson(style):
+    instructor_name = input("Type the name of the instructor: ")
+    found_instructor = session.query(Instructor).filter(Instructor.name == instructor_name).first()
+    print(found_instructor)
+    dancer = session.query(Dancer).filter(Dancer.name == user_input).first()
+    if dancer and found_instructor:
+        lesson = Lesson(
+            style = style,
+            level = 2,
+            age_group = "Kids",
+            instructor_id = found_instructor.id,
+            dancer_id = dancer.id
+        )
+        print(lesson)
+        session.add(lesson)
+        session.commit()
+    else:
+        print("I don't exist!")
 
 
 
@@ -1101,32 +1130,6 @@ if __name__ == '__main__':
     CLI(user_input)
 
 
-
-
-  
-# def make_bottle(self):
-#     user_grape = input("Type the number of the grape from the list above: ")
-#     user_winery = input("Type the number of the winery from the list above: ")
-#     year = input("What vintage is the bottle?: " )
-#     price = input("How much did you pay for the bottle?: " )
-#     score = input("How would you rate it on a scale of 1-10?: " )
-
-#     bottle = Bottle(
-#             price = price,
-#             score = score,
-#             year = year,
-#             grape_id = self.grapes[int(user_grape) - 1].id,
-#             winery_id = self.wineries[int(user_winery) - 1].id
-#     )
-
-#     session.add(bottle)
-#     session.commit()
-
-#     self.bottles.append(bottle)
-#     print(' ')
-#     print('Congratulations! You have added the following wine to your Vitual Cellar!')
-
-#     print_bottle(bottle)
 
 
        
