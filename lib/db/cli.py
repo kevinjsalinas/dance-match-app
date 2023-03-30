@@ -18,12 +18,14 @@ class CLI:
     #Show me a list of instructors
     def start(self):
        print(' ')
-       print(f'🕺🕺🕺🕺 Get ready to get your groove on {self.name} 🕺🕺🕺🕺')
+       print(' ')
+       print(f'🕺🕺🕺🕺 Get ready to get your groove on, {self.name}! 🕺🕺🕺🕺')
+       print(' ')
        print(' ')
 
        exit = False
        while exit == False:
-             options = input(f'We\'re excited to match you with the right instructor. First, tell us about your dance experience. \n \nType "Beginner", "Intermediate", or "Advanced":  ')
+             options = input(f'We\'re excited to match you with the right instructor. First, tell us about your dance experience. \n \nType "Beginner", "Intermediate", or "Advanced": ')
              print(' ') 
              print(' ') 
              if options.lower() == 'beginner':
@@ -53,13 +55,13 @@ class CLI:
 def beginner_dance_choice(self):
     exit = False
     while exit == False:
-             options = input(f'Great! What type of dance style are you interested in learning? \n \nType "Salsa", "Flamenco", "Ballet", "Hip Hop", or "Jazz": ' )
+             options = input(f'Great! What style of dance are you interested in learning? \n \nType "Salsa", "Flamenco", "Ballet", "Hip Hop", or "Jazz": ')
              print(' ') 
              print(' ') 
              if options.lower() == 'salsa':
                  exit = False
                  while exit == False:
-                    options = input(f'Groovy. Let\'s help you choose an instructor. \n \n -------------------------------------------------------------------- \n' +\
+                    options = input(f'Groovy. Let\'s help you choose a Salsa instructor for Beginners. \n \n--------------------------------------------------------------------\n \n' +\
                                 f'Type "ratings" to see top-rated instructors with 4 stars or higher. \n' +\
                                 f'Type "price" to see instructors sorted by price. \n' +\
                                 f'Type "all" to see all instructors. \n \n')
@@ -67,13 +69,16 @@ def beginner_dance_choice(self):
                     print(' ') 
                     if options.lower() == 'ratings':
                         ratings = session.query(Instructor, Lesson).filter(and_(Instructor.id == Lesson.instructor_id, Instructor.rating >= 4, Lesson.level == "Beginner", Lesson.style == "Salsa")).all()
+                        print('🌟🕺🌟 Top-Rated Instructors 🌟🕺🌟')
+                        print(' ')
                         for instructor in ratings:
-                              print(instructor[0])
+                              print(f"-- {instructor[0].name}, {instructor[0].rating} stars")
+                        print(' ')
                     elif options.lower() == 'price':
                          prices = session.query(Instructor, Lesson).filter(and_(Instructor.id == Lesson.instructor_id, Lesson.level == "Beginner", Lesson.style == "Salsa")).all()
-                         print(list(prices))
                          print('Instructors by Price 💵')
                          print(' ')
+                         print(list(prices))
                          for price in prices:
                               print((price[0]))
                               # print(f"-- {price[0].name}: ${price[0].price}")
@@ -93,14 +98,17 @@ def beginner_dance_choice(self):
           #              print(' ') 
           #              print(' ')
 
-          #           elif options.lower() == 'all':
-          #              for i in range(len(self.instructors)):
-          #                  print([instructor for instructor in self.instructors if instructor.id == salsa_list[i].instructor_id])
-          #              print(' ') 
-          #              print(' ')
-
-          #           else:
-          #              exit = True
+                    elif options.lower() == 'all':
+                    #    for i in range(len(self.instructors)):
+                    #        print([instructor for instructor in self.instructors if instructor.id == salsa_list[i].instructor_id])
+                       all = session.query(Instructor, Lesson).filter(and_(Instructor.id == Lesson.instructor_id, Lesson.level == "Beginner", Lesson.style == "Salsa")).all()
+                       print('💃🕺💃 All Beginner Salsa Instructors 💃🕺💃')
+                       print(' ')
+                       for instructor in all:
+                           print(f"-- {instructor[0].name}")
+                       print(' ')
+                    else:
+                       exit = True
                  
           #    elif options.lower() == 'flamenco':
           #        pass
