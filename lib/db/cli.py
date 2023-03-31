@@ -47,7 +47,7 @@ class CLI:
                     quit()
              
 
-       # printer(self.name)
+
 
 
 
@@ -1370,18 +1370,21 @@ if __name__ == '__main__':
     engine = create_engine('sqlite:///migrations_dance_match_app.db')
     Session = sessionmaker(bind=engine)
     session = Session()
-    user_input = input('Welcome to Dance Matcher! Please enter your name: ')
+    print(" ")
+    print("__        __     _                                _           ____                             __  __         _         _                  _ ") 
+    print("\ \      / /___ | |  ___  ___   _ __ ___    ___  | |_  ___   |  _ \   __ _  _ __    ___  ___  |  \/  |  __ _ | |_  ___ | |__    ___  _ __ | |")
+    print(" \ \ /\ / // _ \| | / __|/ _ \ | '_ ` _ \  / _ \ | __|/ _ \  | | | | / _` || '_ \  / __|/ _ \ | |\/| | / _` || __|/ __|| '_ \  / _ \| '__|| |")
+    print("  \ V  V /|  __/| || (__| (_) || | | | | ||  __/ | |_| (_) | | |_| || (_| || | | || (__|  __/ | |  | || (_| || |_| (__ | | | ||  __/| |   |_|")
+    print("   \_/\_/  \___||_| \___|\___/ |_| |_| |_| \___|  \__|\___/  |____/  \__,_||_| |_| \___|\___| |_|  |_| \__,_| \__|\___||_| |_| \___||_|   (_)")
+    print(" ")
+    print(" ")
+    print(" ")
+    user_input = input("Please enter your name: ")
+    print(" ")
+    print(" ")
+    print(" ")
+    print(" o   \ o /  _ o         __|    \ /     |__        o _  \ o /   o    ")
+    print("/|\    |     /\   ___\o   \o    |    o/    o/__   /\     |    /|\   ")
+    print("/ \   / \   | \  /)  |    ( \  /o\  / )    |  (\  / |   / \   / \   ")
+    print(" ")
     CLI(user_input)
-
-
-
-
-       
-# def printer(user_input):
-#     print(' ')
-#     print(f'Goodbye {user_input}!')
-
-
-          #              print(f'{text.center(202)}')
-          #              price_text = '\n'.join(['{}.....${}'.format(*t).center(200) for t in zip(instructor_names, instructor_prices)])
-          #              print(f'{price_text}')
