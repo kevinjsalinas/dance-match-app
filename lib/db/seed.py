@@ -24,7 +24,7 @@ instructor = [
         rating=random.randint(1,5),
         price=random.choice(prices)
     )
-for i in range(50)]
+for i in range(80)]
 
 session.add_all(instructor)
 session.commit()
@@ -34,11 +34,18 @@ session.commit()
 session.query(Dancer).delete()
 session.commit()
 
+kevin = Dancer(name="Kevin Salinas")
+beau = Dancer(name="Beau Kim")
+sam = Dancer(name="Sam Genevay")
+
+session.add_all([kevin, beau, sam])
+session.commit()
+
 dancer = [
     Dancer(
         name=fake.name()
     )
-for i in range(50)]
+for i in range(77)]
 
 session.add_all(dancer)
 session.commit()
@@ -61,7 +68,7 @@ lesson = [
         instructor_id=random.choice(instructor).id,
         dancer_id=random.choice(dancer).id
     )
-for i in range(50)]
+for i in range(80)]
 
 session.add_all(lesson)
 session.commit()

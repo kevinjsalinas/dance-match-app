@@ -1357,7 +1357,7 @@ def join_lesson(style, level):
             dancer_id = dancer.id
         )
         print("")
-        print(f"Congrats! Hope you're excited for your first lesson with {instructor_name}")
+        print(f"🎊 🥳 🎊 Congrats! Get excited for your first lesson with {instructor_name}! 🎊 🥳 🎊")
         session.add(lesson)
         session.commit()
     else:
