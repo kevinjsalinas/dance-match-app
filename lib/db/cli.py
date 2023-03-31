@@ -28,6 +28,7 @@ class CLI:
              options = input(f'We\'re excited to match you with the right instructor. First, tell us about your dance experience. \n \nType "Beginner", "Intermediate", or "Advanced": ')
              print(' ') 
              print(' ') 
+             level = options
              if options.lower() == 'beginner':
                  beginner_dance_choice(self)
 
@@ -416,6 +417,7 @@ def intermediate_dance_choice(self):
              options = input(f'Great! What style of dance are you interested in learning? \n \nType "Salsa", "Flamenco", "Ballet", "Hip Hop", or "Jazz": ')
              print(' ') 
              print(' ') 
+             style = options 
              if options.lower() == 'salsa':
                  exit = False
                  while exit == False:
@@ -761,6 +763,7 @@ def advanced_dance_choice(self):
              print(' ') 
              print(' ') 
              style = options
+             level = "Advanced"
              if options.lower() == 'salsa':
                  exit = False
                  while exit == False:
@@ -1046,7 +1049,7 @@ def advanced_dance_choice(self):
                         for instructor in ratings:
                               print(f"-- {instructor[0].name}, {instructor[0].rating} stars")
                         print(' ')
-                        join_lesson(style)
+                        join_lesson(style, level)
                         #added just now 
                         print(' ')
                         user_input = input('To see other options, type "more" else "exit": ')
@@ -1100,20 +1103,20 @@ def advanced_dance_choice(self):
                 exit = True
 
 
-def join_lesson(style):
-    instructor_name = input("Type the name of the instructor: ")
+def join_lesson(style, level):
+    instructor_name = input("Type the name of the instructor: \n\n")
     found_instructor = session.query(Instructor).filter(Instructor.name == instructor_name).first()
-    print(found_instructor)
+#     print(found_instructor)
     dancer = session.query(Dancer).filter(Dancer.name == user_input).first()
     if dancer and found_instructor:
         lesson = Lesson(
             style = style,
-            level = 2,
+            level = level,
             age_group = "Kids",
             instructor_id = found_instructor.id,
             dancer_id = dancer.id
         )
-        print(lesson)
+        print(f"Congrats! Hope you're excited for your first lesson with {instructor_name}")
         session.add(lesson)
         session.commit()
     else:
