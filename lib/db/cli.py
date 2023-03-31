@@ -59,6 +59,7 @@ def beginner_dance_choice(self):
              print(' ') 
              print(' ')
              style = options 
+             level = "Beginner"
              if options.lower() == 'salsa':
                  exit = False
                  while exit == False:
@@ -76,6 +77,7 @@ def beginner_dance_choice(self):
                         for instructor in ratings:
                               print(f"-- {instructor[0].name}, {instructor[0].rating} stars")
                         print(' ')
+                        join_lesson(style, level)
                         #added just now 
                         print(' ')
                         user_input = input('To see other options, type "more" else "exit": ')
@@ -96,6 +98,7 @@ def beginner_dance_choice(self):
                          for price in show_instructor:
                               print(f"-- {price.name}: ${price.price}")
                          print(' ')
+                         join_lesson(style, level)
                          #added just now 
                          print(' ')
                          user_input = input('To see other options, type "more" else "exit": ')
@@ -110,6 +113,7 @@ def beginner_dance_choice(self):
                        for instructor in all:
                            print(f"-- {instructor[0].name}")
                        print(' ')
+                       join_lesson(style, level)
                        #added just now 
                        print(' ')
                        user_input = input('To see other options, type "more" else "exit": ')
@@ -157,6 +161,7 @@ def beginner_dance_choice(self):
                         for instructor in ratings:
                               print(f"-- {instructor[0].name}, {instructor[0].rating} stars")
                         print(' ')
+                        join_lesson(style, level)
                         #added just now 
                         print(' ')
                         user_input = input('To see other options, type "more" else "exit": ')
@@ -177,6 +182,7 @@ def beginner_dance_choice(self):
                          for price in show_instructor:
                               print(f"-- {price.name}: ${price.price}")
                          print(' ')
+                         join_lesson(style, level)
                          #added just now 
                          print(' ')
                          user_input = input('To see other options, type "more" else "exit": ')
@@ -191,6 +197,7 @@ def beginner_dance_choice(self):
                        for instructor in all:
                            print(f"-- {instructor[0].name}")
                        print(' ')
+                       join_lesson(style, level)
                        #added just now 
                        print(' ')
                        user_input = input('To see other options, type "more" else "exit": ')
@@ -198,6 +205,20 @@ def beginner_dance_choice(self):
                        if user_input == "Exit" or user_input == 'EXIT' or user_input == 'exit':
                          print(f"Goodbye {self.name}")
                          quit()
+                    elif options.lower() == 'dancers':
+                        dancers = session.query(Dancer, Lesson).filter(and_(Dancer.id == Lesson.dancer_id, Lesson.level == "Beginner", Lesson.style == "Flamenco")).all()
+                        print('💃🕺💃 All Beginner Flamenco Dancers 💃🕺💃')
+                        print(' ')
+                        for dancer in dancers:
+                              print(f"-- {dancer[0].name}")
+                        print(' ')
+                        #added just now 
+                        print(' ')
+                        user_input = input('To see other options, type "more" else "exit": ')
+                        print(' ')
+                        if user_input == "Exit" or user_input == 'EXIT' or user_input == 'exit':
+                              print(f"Goodbye {self.name}")
+                              quit()
                     else:
                          ##### just added
                          print(' ')
@@ -224,6 +245,7 @@ def beginner_dance_choice(self):
                         for instructor in ratings:
                               print(f"-- {instructor[0].name}, {instructor[0].rating} stars")
                         print(' ')
+                        join_lesson(style, level)
                         #added just now 
                         print(' ')
                         user_input = input('To see other options, type "more" else "exit": ')
@@ -244,6 +266,7 @@ def beginner_dance_choice(self):
                          for price in show_instructor:
                               print(f"-- {price.name}: ${price.price}")
                          print(' ')
+                         join_lesson(style, level)
                          #added just now 
                          print(' ')
                          user_input = input('To see other options, type "more" else "exit": ')
@@ -258,6 +281,7 @@ def beginner_dance_choice(self):
                        for instructor in all:
                            print(f"-- {instructor[0].name}")
                        print(' ')
+                       join_lesson(style, level)
                        #added just now 
                        print(' ')
                        user_input = input('To see other options, type "more" else "exit": ')
@@ -265,6 +289,20 @@ def beginner_dance_choice(self):
                        if user_input == "Exit" or user_input == 'EXIT' or user_input == 'exit':
                          print(f"Goodbye {self.name}")
                          quit()
+                    elif options.lower() == 'dancers':
+                        dancers = session.query(Dancer, Lesson).filter(and_(Dancer.id == Lesson.dancer_id, Lesson.level == "Beginner", Lesson.style == "Ballet")).all()
+                        print('💃🕺💃 All Beginner Ballet Dancers 💃🕺💃')
+                        print(' ')
+                        for dancer in dancers:
+                              print(f"-- {dancer[0].name}")
+                        print(' ')
+                        #added just now 
+                        print(' ')
+                        user_input = input('To see other options, type "more" else "exit": ')
+                        print(' ')
+                        if user_input == "Exit" or user_input == 'EXIT' or user_input == 'exit':
+                              print(f"Goodbye {self.name}")
+                              quit()
                     else:
                          ##### just added
                          print(' ')
@@ -291,6 +329,7 @@ def beginner_dance_choice(self):
                         for instructor in ratings:
                               print(f"-- {instructor[0].name}, {instructor[0].rating} stars")
                         print(' ')
+                        join_lesson(style, level)
                         #added just now 
                         print(' ')
                         user_input = input('To see other options, type "more" else "exit": ')
@@ -311,6 +350,7 @@ def beginner_dance_choice(self):
                          for price in show_instructor:
                               print(f"-- {price.name}: ${price.price}")
                          print(' ')
+                         join_lesson(style, level)
                          #added just now 
                          print(' ')
                          user_input = input('To see other options, type "more" else "exit": ')
@@ -325,6 +365,7 @@ def beginner_dance_choice(self):
                        for instructor in all:
                            print(f"-- {instructor[0].name}")
                        print(' ')
+                       join_lesson(style, level)
                        #added just now 
                        print(' ')
                        user_input = input('To see other options, type "more" else "exit": ')
@@ -332,6 +373,20 @@ def beginner_dance_choice(self):
                        if user_input == "Exit" or user_input == 'EXIT' or user_input == 'exit':
                          print(f"Goodbye {self.name}")
                          quit()
+                    elif options.lower() == 'dancers':
+                        dancers = session.query(Dancer, Lesson).filter(and_(Dancer.id == Lesson.dancer_id, Lesson.level == "Beginner", Lesson.style == "Hip Hop")).all()
+                        print('💃🕺💃 All Beginner Hip Hop Dancers 💃🕺💃')
+                        print(' ')
+                        for dancer in dancers:
+                              print(f"-- {dancer[0].name}")
+                        print(' ')
+                        #added just now 
+                        print(' ')
+                        user_input = input('To see other options, type "more" else "exit": ')
+                        print(' ')
+                        if user_input == "Exit" or user_input == 'EXIT' or user_input == 'exit':
+                              print(f"Goodbye {self.name}")
+                              quit()
                     else:
                          ##### just added
                          print(' ')
@@ -358,6 +413,7 @@ def beginner_dance_choice(self):
                         for instructor in ratings:
                               print(f"-- {instructor[0].name}, {instructor[0].rating} stars")
                         print(' ')
+                        join_lesson(style, level)
                         #added just now 
                         print(' ')
                         user_input = input('To see other options, type "more" else "exit": ')
@@ -378,6 +434,7 @@ def beginner_dance_choice(self):
                          for price in show_instructor:
                               print(f"-- {price.name}: ${price.price}")
                          print(' ')
+                         join_lesson(style, level)
                          #added just now 
                          print(' ')
                          user_input = input('To see other options, type "more" else "exit": ')
@@ -392,6 +449,7 @@ def beginner_dance_choice(self):
                        for instructor in all:
                            print(f"-- {instructor[0].name}")
                        print(' ')
+                       join_lesson(style, level)
                        #added just now 
                        print(' ')
                        user_input = input('To see other options, type "more" else "exit": ')
@@ -399,6 +457,20 @@ def beginner_dance_choice(self):
                        if user_input == "Exit" or user_input == 'EXIT' or user_input == 'exit':
                          print(f"Goodbye {self.name}")
                          quit()
+                    elif options.lower() == 'dancers':
+                        dancers = session.query(Dancer, Lesson).filter(and_(Dancer.id == Lesson.dancer_id, Lesson.level == "Beginner", Lesson.style == "Jazz")).all()
+                        print('💃🕺💃 All Beginner Jazz Dancers 💃🕺💃')
+                        print(' ')
+                        for dancer in dancers:
+                              print(f"-- {dancer[0].name}")
+                        print(' ')
+                        #added just now 
+                        print(' ')
+                        user_input = input('To see other options, type "more" else "exit": ')
+                        print(' ')
+                        if user_input == "Exit" or user_input == 'EXIT' or user_input == 'exit':
+                              print(f"Goodbye {self.name}")
+                              quit()
                     else:
                          ##### just added
                          print(' ')
@@ -418,6 +490,7 @@ def intermediate_dance_choice(self):
              print(' ') 
              print(' ') 
              style = options 
+             level = "Intermediate"
              if options.lower() == 'salsa':
                  exit = False
                  while exit == False:
@@ -435,6 +508,7 @@ def intermediate_dance_choice(self):
                         for instructor in ratings:
                               print(f"-- {instructor[0].name}, {instructor[0].rating} stars")
                         print(' ')
+                        join_lesson(style, level)
                         #added just now 
                         print(' ')
                         user_input = input('To see other options, type "more" else "exit": ')
@@ -455,6 +529,7 @@ def intermediate_dance_choice(self):
                          for price in show_instructor:
                               print(f"-- {price.name}: ${price.price}")
                          print(' ')
+                         join_lesson(style, level)
                          #added just now 
                          print(' ')
                          user_input = input('To see other options, type "more" else "exit": ')
@@ -469,6 +544,7 @@ def intermediate_dance_choice(self):
                        for instructor in all:
                            print(f"-- {instructor[0].name}")
                        print(' ')
+                       join_lesson(style, level)
                        #added just now 
                        print(' ')
                        user_input = input('To see other options, type "more" else "exit": ')
@@ -476,6 +552,20 @@ def intermediate_dance_choice(self):
                        if user_input == "Exit" or user_input == 'EXIT' or user_input == 'exit':
                          print(f"Goodbye {self.name}")
                          quit()
+                    elif options.lower() == 'dancers':
+                        dancers = session.query(Dancer, Lesson).filter(and_(Dancer.id == Lesson.dancer_id, Lesson.level == "Intermediate", Lesson.style == "Salsa")).all()
+                        print('💃🕺💃 All Intermediate Salsa Dancers 💃🕺💃')
+                        print(' ')
+                        for dancer in dancers:
+                              print(f"-- {dancer[0].name}")
+                        print(' ')
+                        #added just now 
+                        print(' ')
+                        user_input = input('To see other options, type "more" else "exit": ')
+                        print(' ')
+                        if user_input == "Exit" or user_input == 'EXIT' or user_input == 'exit':
+                              print(f"Goodbye {self.name}")
+                              quit()
                     else:
                          ##### just added
                          print(' ')
@@ -502,6 +592,7 @@ def intermediate_dance_choice(self):
                         for instructor in ratings:
                               print(f"-- {instructor[0].name}, {instructor[0].rating} stars")
                         print(' ')
+                        join_lesson(style, level)
                         #added just now 
                         print(' ')
                         user_input = input('To see other options, type "more" else "exit": ')
@@ -522,6 +613,7 @@ def intermediate_dance_choice(self):
                          for price in show_instructor:
                               print(f"-- {price.name}: ${price.price}")
                          print(' ')
+                         join_lesson(style, level)
                          #added just now 
                          print(' ')
                          user_input = input('To see other options, type "more" else "exit": ')
@@ -536,6 +628,7 @@ def intermediate_dance_choice(self):
                        for instructor in all:
                            print(f"-- {instructor[0].name}")
                        print(' ')
+                       join_lesson(style, level)
                        #added just now 
                        print(' ')
                        user_input = input('To see other options, type "more" else "exit": ')
@@ -543,6 +636,20 @@ def intermediate_dance_choice(self):
                        if user_input == "Exit" or user_input == 'EXIT' or user_input == 'exit':
                          print(f"Goodbye {self.name}")
                          quit()
+                    elif options.lower() == 'dancers':
+                        dancers = session.query(Dancer, Lesson).filter(and_(Dancer.id == Lesson.dancer_id, Lesson.level == "Intermediate", Lesson.style == "Flamenco")).all()
+                        print('💃🕺💃 All Intermediate Flamenco Dancers 💃🕺💃')
+                        print(' ')
+                        for dancer in dancers:
+                              print(f"-- {dancer[0].name}")
+                        print(' ')
+                        #added just now 
+                        print(' ')
+                        user_input = input('To see other options, type "more" else "exit": ')
+                        print(' ')
+                        if user_input == "Exit" or user_input == 'EXIT' or user_input == 'exit':
+                              print(f"Goodbye {self.name}")
+                              quit()
                     else:
                          ##### just added
                          print(' ')
@@ -569,6 +676,7 @@ def intermediate_dance_choice(self):
                         for instructor in ratings:
                               print(f"-- {instructor[0].name}, {instructor[0].rating} stars")
                         print(' ')
+                        join_lesson(style, level)
                         #added just now 
                         print(' ')
                         user_input = input('To see other options, type "more" else "exit": ')
@@ -589,6 +697,7 @@ def intermediate_dance_choice(self):
                          for price in show_instructor:
                               print(f"-- {price.name}: ${price.price}")
                          print(' ')
+                         join_lesson(style, level)
                          #added just now 
                          print(' ')
                          user_input = input('To see other options, type "more" else "exit": ')
@@ -603,6 +712,7 @@ def intermediate_dance_choice(self):
                        for instructor in all:
                            print(f"-- {instructor[0].name}")
                        print(' ')
+                       join_lesson(style, level)
                        #added just now 
                        print(' ')
                        user_input = input('To see other options, type "more" else "exit": ')
@@ -610,6 +720,20 @@ def intermediate_dance_choice(self):
                        if user_input == "Exit" or user_input == 'EXIT' or user_input == 'exit':
                          print(f"Goodbye {self.name}")
                          quit()
+                    elif options.lower() == 'dancers':
+                        dancers = session.query(Dancer, Lesson).filter(and_(Dancer.id == Lesson.dancer_id, Lesson.level == "Intermediate", Lesson.style == "Ballet")).all()
+                        print('💃🕺💃 All Intermediate Ballet Dancers 💃🕺💃')
+                        print(' ')
+                        for dancer in dancers:
+                              print(f"-- {dancer[0].name}")
+                        print(' ')
+                        #added just now 
+                        print(' ')
+                        user_input = input('To see other options, type "more" else "exit": ')
+                        print(' ')
+                        if user_input == "Exit" or user_input == 'EXIT' or user_input == 'exit':
+                              print(f"Goodbye {self.name}")
+                              quit()
                     else:
                          ##### just added
                          print(' ')
@@ -636,6 +760,7 @@ def intermediate_dance_choice(self):
                         for instructor in ratings:
                               print(f"-- {instructor[0].name}, {instructor[0].rating} stars")
                         print(' ')
+                        join_lesson(style, level)
                         #added just now 
                         print(' ')
                         user_input = input('To see other options, type "more" else "exit": ')
@@ -656,6 +781,7 @@ def intermediate_dance_choice(self):
                          for price in show_instructor:
                               print(f"-- {price.name}: ${price.price}")
                          print(' ')
+                         join_lesson(style, level)
                          #added just now 
                          print(' ')
                          user_input = input('To see other options, type "more" else "exit": ')
@@ -670,6 +796,7 @@ def intermediate_dance_choice(self):
                        for instructor in all:
                            print(f"-- {instructor[0].name}")
                        print(' ')
+                       join_lesson(style, level)
                        #added just now 
                        print(' ')
                        user_input = input('To see other options, type "more" else "exit": ')
@@ -677,6 +804,20 @@ def intermediate_dance_choice(self):
                        if user_input == "Exit" or user_input == 'EXIT' or user_input == 'exit':
                          print(f"Goodbye {self.name}")
                          quit()
+                    elif options.lower() == 'dancers':
+                        dancers = session.query(Dancer, Lesson).filter(and_(Dancer.id == Lesson.dancer_id, Lesson.level == "Intermediate", Lesson.style == "Hip Hop")).all()
+                        print('💃🕺💃 All Intermediate Hip Hop Dancers 💃🕺💃')
+                        print(' ')
+                        for dancer in dancers:
+                              print(f"-- {dancer[0].name}")
+                        print(' ')
+                        #added just now 
+                        print(' ')
+                        user_input = input('To see other options, type "more" else "exit": ')
+                        print(' ')
+                        if user_input == "Exit" or user_input == 'EXIT' or user_input == 'exit':
+                              print(f"Goodbye {self.name}")
+                              quit()
                     else:
                          ##### just added
                          print(' ')
@@ -703,6 +844,7 @@ def intermediate_dance_choice(self):
                         for instructor in ratings:
                               print(f"-- {instructor[0].name}, {instructor[0].rating} stars")
                         print(' ')
+                        join_lesson(style, level)
                         #added just now 
                         print(' ')
                         user_input = input('To see other options, type "more" else "exit": ')
@@ -723,6 +865,7 @@ def intermediate_dance_choice(self):
                          for price in show_instructor:
                               print(f"-- {price.name}: ${price.price}")
                          print(' ')
+                         join_lesson(style, level)
                          #added just now 
                          print(' ')
                          user_input = input('To see other options, type "more" else "exit": ')
@@ -737,6 +880,7 @@ def intermediate_dance_choice(self):
                        for instructor in all:
                            print(f"-- {instructor[0].name}")
                        print(' ')
+                       join_lesson(style, level)
                        #added just now 
                        print(' ')
                        user_input = input('To see other options, type "more" else "exit": ')
@@ -744,6 +888,20 @@ def intermediate_dance_choice(self):
                        if user_input == "Exit" or user_input == 'EXIT' or user_input == 'exit':
                          print(f"Goodbye {self.name}")
                          quit()
+                    elif options.lower() == 'dancers':
+                        dancers = session.query(Dancer, Lesson).filter(and_(Dancer.id == Lesson.dancer_id, Lesson.level == "Intermediate", Lesson.style == "Jazz")).all()
+                        print('💃🕺💃 All Intermediate Jazz Dancers 💃🕺💃')
+                        print(' ')
+                        for dancer in dancers:
+                              print(f"-- {dancer[0].name}")
+                        print(' ')
+                        #added just now 
+                        print(' ')
+                        user_input = input('To see other options, type "more" else "exit": ')
+                        print(' ')
+                        if user_input == "Exit" or user_input == 'EXIT' or user_input == 'exit':
+                              print(f"Goodbye {self.name}")
+                              quit()
                     else:
                          ##### just added
                          print(' ')
@@ -781,6 +939,7 @@ def advanced_dance_choice(self):
                         for instructor in ratings:
                               print(f"-- {instructor[0].name}, {instructor[0].rating} stars")
                         print(' ')
+                        join_lesson(style, level)
                         #added just now 
                         print(' ')
                         user_input = input('To see other options, type "more" else "exit": ')
@@ -788,7 +947,6 @@ def advanced_dance_choice(self):
                         if user_input == "Exit" or user_input == 'EXIT' or user_input == 'exit':
                               print(f"Goodbye {self.name}")
                               quit()      
-
                     elif options.lower() == 'price':
                          prices = session.query(Instructor, Lesson).filter(and_(Instructor.id == Lesson.instructor_id, Lesson.level == "Advanced", Lesson.style == "Salsa")).all()
                          print('Instructors by Price 💵')
@@ -801,6 +959,7 @@ def advanced_dance_choice(self):
                          for price in show_instructor:
                               print(f"-- {price.name}: ${price.price}")
                          print(' ')
+                         join_lesson(style, level)
                          #added just now 
                          print(' ')
                          user_input = input('To see other options, type "more" else "exit": ')
@@ -815,6 +974,7 @@ def advanced_dance_choice(self):
                        for instructor in all:
                            print(f"-- {instructor[0].name}")
                        print(' ')
+                       join_lesson(style, level)
                        #added just now 
                        print(' ')
                        user_input = input('To see other options, type "more" else "exit": ')
@@ -822,6 +982,20 @@ def advanced_dance_choice(self):
                        if user_input == "Exit" or user_input == 'EXIT' or user_input == 'exit':
                          print(f"Goodbye {self.name}")
                          quit()
+                    elif options.lower() == 'dancers':
+                        dancers = session.query(Dancer, Lesson).filter(and_(Dancer.id == Lesson.dancer_id, Lesson.level == "Advanced", Lesson.style == "Salsa")).all()
+                        print('💃🕺💃 All Advanced Salsa Dancers 💃🕺💃')
+                        print(' ')
+                        for dancer in dancers:
+                              print(f"-- {dancer[0].name}")
+                        print(' ')
+                        #added just now 
+                        print(' ')
+                        user_input = input('To see other options, type "more" else "exit": ')
+                        print(' ')
+                        if user_input == "Exit" or user_input == 'EXIT' or user_input == 'exit':
+                              print(f"Goodbye {self.name}")
+                              quit()
                     else:
                          ##### just added
                          print(' ')
@@ -848,6 +1022,7 @@ def advanced_dance_choice(self):
                         for instructor in ratings:
                               print(f"-- {instructor[0].name}, {instructor[0].rating} stars")
                         print(' ')
+                        join_lesson(style, level)
                         #added just now 
                         print(' ')
                         user_input = input('To see other options, type "more" else "exit": ')
@@ -855,7 +1030,6 @@ def advanced_dance_choice(self):
                         if user_input == "Exit" or user_input == 'EXIT' or user_input == 'exit':
                               print(f"Goodbye {self.name}")
                               quit()      
-
                     elif options.lower() == 'price':
                          prices = session.query(Instructor, Lesson).filter(and_(Instructor.id == Lesson.instructor_id, Lesson.level == "Advanced", Lesson.style == "Flamenco")).all()
                          print('Instructors by Price 💵')
@@ -868,6 +1042,7 @@ def advanced_dance_choice(self):
                          for price in show_instructor:
                               print(f"-- {price.name}: ${price.price}")
                          print(' ')
+                         join_lesson(style, level)
                          #added just now 
                          print(' ')
                          user_input = input('To see other options, type "more" else "exit": ')
@@ -882,6 +1057,7 @@ def advanced_dance_choice(self):
                        for instructor in all:
                            print(f"-- {instructor[0].name}")
                        print(' ')
+                       join_lesson(style, level)
                        #added just now 
                        print(' ')
                        user_input = input('To see other options, type "more" else "exit": ')
@@ -889,6 +1065,20 @@ def advanced_dance_choice(self):
                        if user_input == "Exit" or user_input == 'EXIT' or user_input == 'exit':
                          print(f"Goodbye {self.name}")
                          quit()
+                    elif options.lower() == 'dancers':
+                        dancers = session.query(Dancer, Lesson).filter(and_(Dancer.id == Lesson.dancer_id, Lesson.level == "Advanced", Lesson.style == "Flamenco")).all()
+                        print('💃🕺💃 All Advanced Flamenco Dancers 💃🕺💃')
+                        print(' ')
+                        for dancer in dancers:
+                              print(f"-- {dancer[0].name}")
+                        print(' ')
+                        #added just now 
+                        print(' ')
+                        user_input = input('To see other options, type "more" else "exit": ')
+                        print(' ')
+                        if user_input == "Exit" or user_input == 'EXIT' or user_input == 'exit':
+                              print(f"Goodbye {self.name}")
+                              quit()
                     else:
                          ##### just added
                          print(' ')
@@ -915,6 +1105,7 @@ def advanced_dance_choice(self):
                         for instructor in ratings:
                               print(f"-- {instructor[0].name}, {instructor[0].rating} stars")
                         print(' ')
+                        join_lesson(style, level)
                         #added just now 
                         print(' ')
                         user_input = input('To see other options, type "more" else "exit": ')
@@ -935,6 +1126,7 @@ def advanced_dance_choice(self):
                          for price in show_instructor:
                               print(f"-- {price.name}: ${price.price}")
                          print(' ')
+                         join_lesson(style, level)
                          #added just now 
                          print(' ')
                          user_input = input('To see other options, type "more" else "exit": ')
@@ -949,6 +1141,7 @@ def advanced_dance_choice(self):
                        for instructor in all:
                            print(f"-- {instructor[0].name}")
                        print(' ')
+                       join_lesson(style, level)
                        #added just now 
                        print(' ')
                        user_input = input('To see other options, type "more" else "exit": ')
@@ -956,6 +1149,20 @@ def advanced_dance_choice(self):
                        if user_input == "Exit" or user_input == 'EXIT' or user_input == 'exit':
                          print(f"Goodbye {self.name}")
                          quit()
+                    elif options.lower() == 'dancers':
+                        dancers = session.query(Dancer, Lesson).filter(and_(Dancer.id == Lesson.dancer_id, Lesson.level == "Advanced", Lesson.style == "Ballet")).all()
+                        print('💃🕺💃 All Advanced Ballet Dancers 💃🕺💃')
+                        print(' ')
+                        for dancer in dancers:
+                              print(f"-- {dancer[0].name}")
+                        print(' ')
+                        #added just now 
+                        print(' ')
+                        user_input = input('To see other options, type "more" else "exit": ')
+                        print(' ')
+                        if user_input == "Exit" or user_input == 'EXIT' or user_input == 'exit':
+                              print(f"Goodbye {self.name}")
+                              quit()
                     else:
                          ##### just added
                          print(' ')
@@ -982,6 +1189,7 @@ def advanced_dance_choice(self):
                         for instructor in ratings:
                               print(f"-- {instructor[0].name}, {instructor[0].rating} stars")
                         print(' ')
+                        join_lesson(style, level)
                         #added just now 
                         print(' ')
                         user_input = input('To see other options, type "more" else "exit": ')
@@ -1002,6 +1210,7 @@ def advanced_dance_choice(self):
                          for price in show_instructor:
                               print(f"-- {price.name}: ${price.price}")
                          print(' ')
+                         join_lesson(style, level)
                          #added just now 
                          print(' ')
                          user_input = input('To see other options, type "more" else "exit": ')
@@ -1016,6 +1225,7 @@ def advanced_dance_choice(self):
                        for instructor in all:
                            print(f"-- {instructor[0].name}")
                        print(' ')
+                       join_lesson(style, level)
                        #added just now 
                        print(' ')
                        user_input = input('To see other options, type "more" else "exit": ')
@@ -1023,6 +1233,20 @@ def advanced_dance_choice(self):
                        if user_input == "Exit" or user_input == 'EXIT' or user_input == 'exit':
                          print(f"Goodbye {self.name}")
                          quit()
+                    elif options.lower() == 'dancers':
+                        dancers = session.query(Dancer, Lesson).filter(and_(Dancer.id == Lesson.dancer_id, Lesson.level == "Advanced", Lesson.style == "Hip Hop")).all()
+                        print('💃🕺💃 All Advanced Hip Hop Dancers 💃🕺💃')
+                        print(' ')
+                        for dancer in dancers:
+                              print(f"-- {dancer[0].name}")
+                        print(' ')
+                        #added just now 
+                        print(' ')
+                        user_input = input('To see other options, type "more" else "exit": ')
+                        print(' ')
+                        if user_input == "Exit" or user_input == 'EXIT' or user_input == 'exit':
+                              print(f"Goodbye {self.name}")
+                              quit()
                     else:
                          ##### just added
                          print(' ')
@@ -1070,6 +1294,7 @@ def advanced_dance_choice(self):
                          for price in show_instructor:
                               print(f"-- {price.name}: ${price.price}")
                          print(' ')
+                         join_lesson(style, level)
                          #added just now 
                          print(' ')
                          user_input = input('To see other options, type "more" else "exit": ')
@@ -1084,6 +1309,7 @@ def advanced_dance_choice(self):
                        for instructor in all:
                            print(f"-- {instructor[0].name}")
                        print(' ')
+                       join_lesson(style, level)
                        #added just now 
                        print(' ')
                        user_input = input('To see other options, type "more" else "exit": ')
@@ -1091,6 +1317,20 @@ def advanced_dance_choice(self):
                        if user_input == "Exit" or user_input == 'EXIT' or user_input == 'exit':
                          print(f"Goodbye {self.name}")
                          quit()
+                    elif options.lower() == 'dancers':
+                        dancers = session.query(Dancer, Lesson).filter(and_(Dancer.id == Lesson.dancer_id, Lesson.level == "Advanced", Lesson.style == "Jazz")).all()
+                        print('💃🕺💃 All Advanced Jazz Dancers 💃🕺💃')
+                        print(' ')
+                        for dancer in dancers:
+                              print(f"-- {dancer[0].name}")
+                        print(' ')
+                        #added just now 
+                        print(' ')
+                        user_input = input('To see other options, type "more" else "exit": ')
+                        print(' ')
+                        if user_input == "Exit" or user_input == 'EXIT' or user_input == 'exit':
+                              print(f"Goodbye {self.name}")
+                              quit()
                     else:
                          ##### just added
                          print(' ')
@@ -1104,7 +1344,7 @@ def advanced_dance_choice(self):
 
 
 def join_lesson(style, level):
-    instructor_name = input("Type the name of the instructor: \n\n")
+    instructor_name = input("Type the name of the instructor you'd like to enroll with OR hit enter: ")
     found_instructor = session.query(Instructor).filter(Instructor.name == instructor_name).first()
 #     print(found_instructor)
     dancer = session.query(Dancer).filter(Dancer.name == user_input).first()
@@ -1116,11 +1356,12 @@ def join_lesson(style, level):
             instructor_id = found_instructor.id,
             dancer_id = dancer.id
         )
+        print("")
         print(f"Congrats! Hope you're excited for your first lesson with {instructor_name}")
         session.add(lesson)
         session.commit()
     else:
-        print("I don't exist!")
+        print("")
 
 
 
